@@ -22,7 +22,7 @@ public class VideoEncoder {
         FFprobe ffprobe = new FFprobe("/usr/local/bin/ffprobe");
 
         FFmpegBuilder builder = new FFmpegBuilder()
-                .setInput("input.mp4")
+                .setInput("temp.webm")
                 .overrideOutputFiles(true)
                 .addOutput("output.mp4")
                 .setFormat("mp4")
