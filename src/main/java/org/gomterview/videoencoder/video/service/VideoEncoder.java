@@ -5,13 +5,19 @@ import net.bramp.ffmpeg.FFmpegExecutor;
 import net.bramp.ffmpeg.FFprobe;
 import net.bramp.ffmpeg.builder.FFmpegBuilder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
 
 @Service()
 public class VideoEncoder {
 
-    public void encodeVideo() throws IOException {
+    public void encodeVideo(final MultipartFile file) throws IOException {
+
+        File tempFile = File.createTempFile("temp", "webm");
+        file.transferTo(tempFile);
+
         FFmpeg ffmpeg = new FFmpeg("/usr/local/bin/ffmpeg");
         FFprobe ffprobe = new FFprobe("/usr/local/bin/ffprobe");
 
